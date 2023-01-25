@@ -1,0 +1,44 @@
+@import '../../styles/colors';
+
+.wrapHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 0px 16px -4px rgba(131, 137, 169, 0.2);
+
+  .wrapLanguageChange {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 24px;
+    border-right: 1px solid @grey-violet-200;
+    .globeImage {
+      margin-right: 12px;
+    }
+    .flagImage {
+      margin-right: 12px;
+    }
+  }
+}
+
+:global {
+  .ant-layout-header {
+    background: @white !important;
+    padding: 16px 20px !important;
+    .ant-image-img {
+      width: unset;
+    }
+  }
+  .ant-dropdown {
+    top: 65px !important;
+    .ant-dropdown-menu {
+      border-radius: 8px !important;
+      .ant-dropdown-menu-item {
+        padding: 16px;
+      }
+    }
+    .ant-image-img {
+      width: unset;
+    }
+  }
+}
