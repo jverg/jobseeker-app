@@ -1,0 +1,165 @@
+@import './colors.less';
+@import './typography.less';
+@import './variables.less';
+
+.ui-button-default(
+  @background, @color, @border,
+  @hover-background, @hover-color, @hover-border,
+  @focus-background, @focus-color, @focus-box-shadow, @focus-border,
+  @active-background, @active-color, @active-box-shadow, @active-border,
+  @disabled-background, @disabled-color, @disabled-border) {
+  border-radius: 8px;
+  height: auto;
+  border: @border;
+  background: @background;
+  color: @color;
+  padding: @padding-12 @padding-32;
+  font-family: Cera Pro, serif;
+  &:extend(.h5);
+
+
+  & > svg {
+    & path {
+      fill: @color;
+    }
+  }
+
+  &.ant-btn-icon-only {
+    width: auto;
+
+    & > svg {
+      margin: auto 0 auto auto;
+      width: 16px;
+    }
+
+    padding: @padding-12;
+  }
+
+  &.ant-btn-sm {
+    &.ant-btn-icon-only {
+      height: auto;
+      border-radius: 8px;
+
+      & > svg {
+        width: 12px;
+        height: 12px;
+      }
+
+      padding: @padding-8;
+    }
+
+    padding: @padding-8 @padding-20;
+    &:extend(.h6);
+  }
+
+  &.ant-btn-lg {
+    &.ant-btn-icon-only {
+      & > svg {
+        width: 20px;
+      }
+
+      padding: @padding-16;
+    }
+
+    padding: @padding-20 @padding-40;
+    &:extend(.h4);
+  }
+
+  &:hover {
+    background: @hover-background;
+    color: @hover-color;
+    border: @hover-border;
+
+    & > svg {
+      & path {
+        fill: @hover-color;
+      }
+    }
+  }
+  &:focus {
+    background: @focus-background;
+    box-shadow: @focus-box-shadow;
+    color: @focus-color;
+    border: @focus-border;
+
+    & > svg {
+      & path {
+        fill: @focus-color;
+      }
+    }
+  }
+  &:active {
+    background: @active-background;
+    box-shadow: @active-box-shadow !important;
+    color: @active-color;
+    border: @active-border;
+
+    & > svg {
+      & path {
+        fill: @active-color;
+      }
+    }
+  }
+  &[disabled] {
+    background: @disabled-background !important;
+    color: @disabled-color !important;
+    border: @disabled-border;
+    text-decoration: none !important;
+
+    & > svg {
+      & path {
+        fill: @disabled-color !important;
+      }
+    }
+  }
+}
+
+.ui-button {
+  &.ant-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: normal;
+
+    & > svg {
+      margin-right: 8px;
+    }
+
+    &.ant-btn-primary {
+      .ui-button-default(@secondary-500-base, @white, 1px solid @secondary-500-base,
+              @secondary-400, @white, 1px solid @secondary-400,
+              @secondary-500-base, @white, 0 0 0 3px @secondary-050, 1px solid @secondary-500-base,
+              @secondary-600, @white, 0 0 0 3px @secondary-100, 1px solid @secondary-600,
+              @secondary-100, @white, 1px solid @secondary-100);
+      text-shadow: none !important;
+    }
+
+    &.ant-btn-ghost {
+      box-shadow: none !important;
+      border: none !important;
+      .ui-button-default(unset, @secondary-500-base, unset,
+              @secondary-050, @secondary-500-base, 1px solid @secondary-050,
+              @secondary-200, @secondary-500-base, none, 1px solid @secondary-200,
+              @secondary-100, @secondary-500-base, none, 1px solid @secondary-100,
+              unset, @secondary-200, unset);
+    }
+
+    &.ant-btn-link {
+      .ui-button-default(none, @secondary-500-base, none,
+              none, @secondary-600, none,
+              none, @secondary-600, none, none,
+              none, @secondary-600, none, none,
+              none, @secondary-200, none);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .ui-button-default(@white, @secondary-500-base, 1px solid @secondary-500-base,
+            @secondary-050, @secondary-500-base, 1px solid @secondary-500-base,
+            @secondary-500-base, @white, 0 0 0 3px @secondary-050, 1px solid @secondary-600,
+            @secondary-100, @secondary-500-base, 0 0 0 3px @secondary-100, 1px solid @secondary-600,
+            @white, @secondary-200, 1px solid @secondary-200);
+  }
+}

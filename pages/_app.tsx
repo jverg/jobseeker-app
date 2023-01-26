@@ -24,7 +24,11 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <meta key="og:url" property="og:url" content={`${FRONTEND_URL}`} />
                 <meta key="og:description" property="og:description" content="Jobseeker app" />
                 <meta key="og:image" property="og:image" content={`/assets/svgs/kariera-logo.svg`} />
-                {/*<link rel="preload" href="/fonts/Cera-Pro-Bold.otf" as="font" crossOrigin="" />*/}
+                <link rel="preload" href="/fonts/Cera-Pro-Bold.otf" as="font" crossOrigin="" />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
+                    rel="stylesheet"
+                />
             </Head>
             <AppLayout>
                 <Component {...pageProps} />

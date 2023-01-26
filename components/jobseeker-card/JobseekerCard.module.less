@@ -1,0 +1,43 @@
+@import '../../styles/colors';
+@import '../../styles/typography';
+
+.wrapCard {
+  width: 335px;
+  background-color: white;
+  box-shadow: 0px 0px 16px -4px rgba(131, 137, 169, 0.2);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 18px;
+  margin-left: 18px;
+  padding: 16px;
+  .positionTitle {
+    color: #3E4B5E;
+  }
+  .companySubheader {
+    color: #8999AF;
+  }
+  .cardDetails {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 15px;
+    margin: 16px 0;
+
+    .cardDetail {
+      background-color: #FBFAFF;
+      border: 1px solid #F0EDFF;
+      border-radius: 4px;
+      padding: 4px 8px;
+      .detailTitle {
+        color: #8999AF
+      }
+      .detailInfo {
+        color: #3E4B5E
+      }
+    }
+    .cardDetail > p {
+      margin-bottom: 0;
+    }
+  }
+}

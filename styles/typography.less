@@ -1,0 +1,36 @@
+.heading(@font-size, @line-height) {
+  font-family: Cera Pro, serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: @font-size;
+  line-height: @line-height;
+  margin-bottom: 0;
+}
+
+.body-text(@font-size, @line-height) {
+  font-family: Source Sans Pro, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: @font-size;
+  line-height: @line-height;
+  margin-bottom: 0;
+}
+
+.h4 {
+  .heading(21px, 26px);
+}
+.h6 {
+  .heading(12px, 15px);
+}
+
+.main-body-text {
+  .body-text(14px, 18px);
+}
+
+@font-face {
+  font-family: Cera Pro;
+  font-style: normal;
+  font-weight: bold;
+  src: url('/fonts/Cera-Pro-Bold.otf') format('opentype');
+  font-display: swap;
+}
