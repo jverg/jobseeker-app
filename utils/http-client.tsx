@@ -5,9 +5,9 @@ const {
     publicRuntimeConfig: { BACKEND_URL },
 } = getConfig();
 
-const backEndUrl = `${BACKEND_URL}`;
+const backEndUrl = `${BACKEND_URL}/api`;
 
-const instance: AxiosInstance = axios.create({ baseURL: backEndUrl, withCredentials: true });
+const instance: AxiosInstance = axios.create({ baseURL: backEndUrl });
 
 const errorStatuses = [400, 403, 404, 422, 428];
 

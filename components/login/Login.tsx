@@ -20,8 +20,6 @@ const Login: React.FC = () => {
             setLoading(false);
         } catch (requestError: any) {
             setLoading(false);
-            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-            // requestError.ErrorMessage === 'invalid_login' && unableLogin('Invalid credentials');
         }
     };
 
@@ -31,36 +29,34 @@ const Login: React.FC = () => {
 
     return (
         <div className={styles.wrapForm}>
-        <Form
-            name="login"
-            layout="vertical"
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete="off"
-            className={styles.formElement}
-        >
-            <Form.Item
-                label="Enter your email"
-                name="email"
-                rules={[{ required: true, message: 'Please input your email!' }]}
+            <Form
+                name="login"
+                layout="vertical"
+                onFinish={onFinish}
+                onFinishFailed={onFinishFailed}
+                autoComplete="off"
+                className={styles.formElement}
             >
-                <Input placeholder='johndoe@email.com' />
-            </Form.Item>
-
-            <Form.Item
-                label="Password"
-                name="password"
-                rules={[{ required: true, message: 'Please input your password!' }]}
-            >
-                <Input.Password />
-            </Form.Item>
-
-            <Form.Item>
-                <Button type="primary" htmlType="submit">
-                    Login
-                </Button>
-            </Form.Item>
-        </Form>
+                <Form.Item
+                    label="Enter your email"
+                    name="email"
+                    rules={[{ required: true, message: 'Please input your email!' }]}
+                >
+                    <Input disabled={loading} placeholder='johndoe@email.com' />
+                </Form.Item>
+                <Form.Item
+                    label="Password"
+                    name="password"
+                    rules={[{ required: true, message: 'Please input your password!' }]}
+                >
+                    <Input.Password disabled={loading} />
+                </Form.Item>
+                <Form.Item>
+                    <Button type="primary" htmlType="submit">
+                        Login
+                    </Button>
+                </Form.Item>
+            </Form>
         </div>
     );
 };
