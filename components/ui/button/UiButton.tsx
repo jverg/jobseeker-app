@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, ButtonProps } from 'antd';
 
 export interface UiButtonProps extends ButtonProps {
-  onClick?: React.MouseEventHandler<HTMLElement>;
+  onClick: React.MouseEventHandler<HTMLElement>;
 }
 
 const UiButton: React.FC<UiButtonProps> = ({ children, onClick, className, ...rest }) => {
