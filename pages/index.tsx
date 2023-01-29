@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import JobseekerCard from '@components/jobseeker-card/JobseekerCard';
 import listJobPosts from '@services/job-posts/jobposts-http.service';
-import Jobs, { Job } from '@models/jobs';
+import JobsList from '@components/jobs-list/JosList';
+import Jobs from '@models/jobs';
+import {Spin} from "antd";
 
 const HomePage: React.FC = () => {
   const [jobs, setJobs] = useState<Jobs>();
@@ -18,15 +19,7 @@ const HomePage: React.FC = () => {
     fetchPositions();
   }, []);
 
-  return (
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      {jobs
-        ? jobs.items.map((job: Job) => {
-            return <JobseekerCard key={job.id} job={job} />;
-          })
-        : ''}
-    </div>
-  );
+  return jobs ? <JobsList jobs={jobs} /> : <Spin />;
 };
 
 export default HomePage;
