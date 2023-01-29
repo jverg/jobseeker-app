@@ -5,4 +5,13 @@ interface User {
   lastName?: string;
 }
 
+export interface UserLoginResponse {
+  token: {
+    accessToken: string;
+    expiresIn: string;
+    tokenType: string;
+  };
+  user: User;
+}
+
 export default User;

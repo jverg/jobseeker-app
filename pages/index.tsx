@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import listJobPosts from '@services/job-posts/jobposts-http.service';
 import JobsList from '@components/jobs-list/JosList';
+import { Spin } from 'antd';
 import Jobs from '@models/jobs';
-import {Spin} from "antd";
 
 const HomePage: React.FC = () => {
   const [jobs, setJobs] = useState<Jobs>();

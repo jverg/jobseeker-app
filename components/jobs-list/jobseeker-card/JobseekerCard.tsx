@@ -8,11 +8,10 @@ type JobseekerCardProps = {
   job: Job;
 };
 
-const JobseekerCard: React.FC<JobseekerCardProps> = ({job}) => {
+const JobseekerCard: React.FC<JobseekerCardProps> = ({ job }) => {
   const onFinish = async () => {
     try {
-      const jobsList = await listJobPosts();
-      console.log(jobsList);
+      await listJobPosts();
     } catch (requestError: any) {
       console.log('fail request');
     }

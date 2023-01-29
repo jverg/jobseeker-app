@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Form, Input } from 'antd';
+import { Form, Input } from 'antd';
 import loginUser from '@services/login/login-http.service';
+import UiButton from '@components/ui/button/UiButton';
 import styles from './Login.module.less';
 
 const Login: React.FC = () => {
@@ -52,9 +53,9 @@ const Login: React.FC = () => {
           <Input.Password disabled={loading} />
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <UiButton type="primary" size="small" htmlType="submit" onClick={() => {}}>
             Login
-          </Button>
+          </UiButton>
         </Form.Item>
       </Form>
     </div>
