@@ -7,7 +7,12 @@ const {
 
 const backEndUrl = `${BACKEND_URL}/api`;
 
-const instance: AxiosInstance = axios.create({ baseURL: backEndUrl });
+const instance: AxiosInstance = axios.create({
+  baseURL: backEndUrl,
+  headers: {
+    Authorization: typeof window !== 'undefined' ? `Bearer ${localStorage.getItem('jwt')}` : '',
+  },
+});
 
 const errorStatuses = [400, 403, 404, 422, 428];
 

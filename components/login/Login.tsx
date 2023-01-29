@@ -15,8 +15,8 @@ const Login: React.FC = () => {
     try {
       setLoading(true);
       const token = await loginUser(values.email, values.password);
-      console.log(token);
-      window.location.assign('/home');
+      localStorage.setItem('jwt', token.token.accessToken);
+      window.location.assign('/');
       setLoading(false);
     } catch (requestError: any) {
       setLoading(false);
