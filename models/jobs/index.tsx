@@ -1,4 +1,4 @@
-export interface Job {
+export interface JobModel {
   id: number;
   companyName: string;
   address: string;
@@ -8,7 +8,7 @@ export interface Job {
 }
 
 interface Jobs {
-  items: Array<Job>;
+  items: Array<JobModel>;
   totalCount: number;
   totalPages: number;
 }

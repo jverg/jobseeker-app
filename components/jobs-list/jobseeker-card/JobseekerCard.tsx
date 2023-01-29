@@ -1,21 +1,16 @@
 import React from 'react';
 import UiButton from '@components/ui/button/UiButton';
 import listJobPosts from '@services/job-posts/jobposts-http.service';
-import { Job } from '@models/jobs';
+import { useRouter } from 'next/router';
+import { JobModel } from '@models/jobs';
 import styles from './JobseekerCard.module.less';
 
 type JobseekerCardProps = {
-  job: Job;
+  job: JobModel;
 };
 
 const JobseekerCard: React.FC<JobseekerCardProps> = ({ job }) => {
-  const onFinish = async () => {
-    try {
-      await listJobPosts();
-    } catch (requestError: any) {
-      console.log('fail request');
-    }
-  };
+  const router = useRouter();
 
   return (
     <div className={styles.wrapCard}>
@@ -35,7 +30,7 @@ const JobseekerCard: React.FC<JobseekerCardProps> = ({ job }) => {
           <p className={`main-body-text ${styles.detailInfo}`}>{job.address}</p>
         </div>
       </div>
-      <UiButton type="primary" size="small" onClick={onFinish}>
+      <UiButton type="primary" size="small" onClick={() => router.push(`/job/${job.id}`)}>
         Apply now
       </UiButton>
     </div>
