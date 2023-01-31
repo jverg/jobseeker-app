@@ -1,21 +1,24 @@
 import React from 'react';
-import Jobs, { JobModel } from '@models/jobs';
+import { Spin } from 'antd';
+import { JobModel } from '@models/jobs';
 import JobCard from '@components/jobs-list/job-card/JobCard';
 import styles from './JobsList.module.less';
 
 type JobsListProps = {
-  jobs: Jobs;
+  jobs: Array<JobModel>;
 };
 
 const JobsList: React.FC<JobsListProps> = ({ jobs }) => {
   return (
     <div className={styles.wrapJobsList}>
       <div className={styles.jobsList}>
-        {jobs
-          ? jobs.items.map((job: JobModel) => {
-              return <JobCard key={job.id} job={job} action />;
-            })
-          : ''}
+        {jobs ? (
+          jobs.map((job: JobModel) => {
+            return <JobCard key={job.id} job={job} action />;
+          })
+        ) : (
+          <Spin />
+        )}
       </div>
     </div>
   );

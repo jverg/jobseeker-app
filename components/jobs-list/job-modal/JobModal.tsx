@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { JobModel } from '@models/jobs';
 import { Spin } from 'antd';
 import JobCard from '@components/jobs-list/job-card/JobCard';
-import { getJob } from '@services/job-posts/jobposts-http.service';
+import { getJob } from '@services/jobs/jobs-http.service';
 import HtmlRenderer from '@components/ui/html-renderer/HtmlRenderer';
 import styles from './JobModal.module.less';
 

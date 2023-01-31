@@ -5,6 +5,6 @@ export function getJob(jobId: string): Promise<JobModel> {
   return axiosInstance.get(`/job-posts/${jobId}`);
 }
 
-export default function listJobs(): Promise<Jobs> {
-  return axiosInstance.get('/job-posts');
+export default function listJobs(page?: number): Promise<Jobs> {
+  return axiosInstance.get('/job-posts', { params: { page } });
 }
