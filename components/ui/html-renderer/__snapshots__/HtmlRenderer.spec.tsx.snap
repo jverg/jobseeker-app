@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HtmlRenderer should render a more complex html and escape dangerous tags 1`] = `
+<div>
+  <div
+    class="undefined "
+    data-testid="html-renderer-test"
+  >
+    
+      
+    <h2>
+      This is the heading h2
+    </h2>
+    
+      
+    <h3>
+      This is heading h3
+    </h3>
+    
+      
+    <p>
+      Bla bla bla 
+      <a
+        href="https://www.google.com"
+        target="_blank"
+      >
+        google
+      </a>
+       bla bla bla 
+      <strong>
+        blablabla 
+      </strong>
+      bla 
+      <em>
+        blabla 
+      </em>
+      <span>
+        bla
+      </span>
+    </p>
+    
+      
+    <ul>
+      
+      
+      <li>
+        1
+      </li>
+      
+      
+      <li>
+        2
+      </li>
+      
+      
+      <li>
+        3
+      </li>
+      
+      
+    </ul>
+    
+      
+    <p>
+      Bla bla bla
+    </p>
+    
+      
+    <p>
+      <img
+        alt=""
+        height="193"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Im…obile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
+        width="257"
+      />
+       
+      <img
+        alt=""
+        height="192"
+        src="https://employerfiles.blob.core.windows.net/useruploads/1005/branded-company/images/2d79deeba1e03.jpg"
+        width="290"
+      />
+    </p>
+    
+      
+    <p
+      class="iframe-container"
+    >
+      <iframe
+        allowfullscreen="allowfullscreen"
+        height="222"
+        loading="lazy"
+        src="https://www.youtube.com/embed/womsDCDcEEM"
+        width="547"
+      />
+    </p>
+    
+      
+    
+  </div>
+</div>
+`;

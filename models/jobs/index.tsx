@@ -5,6 +5,7 @@ export interface JobModel {
   createdAt: number;
   validUntil: number;
   title: string;
+  description: string;
 }
 
 interface Jobs {

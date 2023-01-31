@@ -2,15 +2,13 @@
 @import '../../../styles/typography';
 
 .wrapCard {
-  width: 335px;
   background-color: white;
   box-shadow: 0px 0px 16px -4px rgba(131, 137, 169, 0.2);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  margin-top: 18px;
-  margin-left: 18px;
   padding: 16px;
+  width: 100%;
   .positionTitle {
     color: #3E4B5E;
   }
@@ -29,10 +27,7 @@
       border: 1px solid #F0EDFF;
       border-radius: 4px;
       padding: 4px 8px;
-      height: 60px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
+
       .detailTitle {
         color: #8999AF
       }
@@ -43,5 +38,16 @@
     .cardDetail > p {
       margin-bottom: 0;
     }
+  }
+}
+.modalTitle {
+  color: @grey-warm-600;
+}
+:global {
+  .ant-modal-header {
+    border-bottom: none;
+  }
+  .ant-modal-body {
+    padding: 0 20px;
   }
 }
