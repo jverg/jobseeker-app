@@ -5,6 +5,7 @@ import JobCard from '@components/jobs-list/job-card/JobCard';
 import { getJob } from '@services/jobs/jobs-http.service';
 import HtmlRenderer from '@components/ui/html-renderer/HtmlRenderer';
 import styles from './JobModal.module.less';
+import UiButton from "@components/ui/button/UiButton";
 
 type JobModalProps = {
   jobId: number;
@@ -25,16 +26,25 @@ const JobModal: React.FC<JobModalProps> = ({ jobId }) => {
   }, [jobId]);
 
   return (
-    <div className={styles.wrapJobsList}>
+    <>
       {job ? (
-        <div className={styles.jobsList}>
-          <JobCard job={job} action={false} />
-          <HtmlRenderer html={job.description} />
+        <div>
+          <div className={styles.stickyHeaderCard}>
+            <JobCard job={job} action={false} />
+          </div>
+          <div className={styles.wrapJobDescription}>
+            <HtmlRenderer html={job.description} />
+          </div>
+          <div className={styles.wrapSendApplicationButton}>
+            <UiButton type="primary" size="small" onClick={() => {}} className={styles.sendApplication}>
+              Send application
+            </UiButton>
+          </div>
         </div>
       ) : (
         <Spin />
       )}
-    </div>
+    </>
   );
 };
 
