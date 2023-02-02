@@ -4,11 +4,24 @@
 .wrapJobsList {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  max-width: 335px;
   .jobsList {
     display: flex;
     justify-content: center;
     max-width: 335px;
     flex-wrap: wrap;
     gap: 12px;
+  }
+  .loadingMore {
+    color: @grey-violet-700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 27px 0;
+    .loadingText {
+      margin-left: 16px;
+    }
   }
 }
