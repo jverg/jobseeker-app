@@ -1,5 +1,6 @@
 @import '../../../styles/colors';
 @import '../../../styles/typography';
+@import '../../../styles/variables';
 
 .wrapCard {
   background-color: white;
@@ -9,37 +10,109 @@
   flex-direction: column;
   padding: 16px;
   width: 100%;
-  .positionTitle {
-    color: #3E4B5E;
-  }
-  .companySubheader {
-    color: #8999AF;
-  }
-  .cardDetails {
-    display: flex;
+  @media @desktop-medium {
     flex-direction: row;
-    align-items: flex-start;
-    gap: 15px;
-    margin: 16px 0;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
 
-    .cardDetail {
-      background-color: #FBFAFF;
-      border: 1px solid #F0EDFF;
-      border-radius: 4px;
-      padding: 4px 8px;
+  .jobInfoMobile {
+    @media @desktop-medium {
+      flex-direction: column;
+      display: none;
+    }
 
-      .detailTitle {
-        color: #8999AF
-      }
-      .detailInfo {
-        color: #3E4B5E
+    .mobileJobHeader {
+      display: flex;
+      align-items: center;
+
+      .wrapCompanyLogo {
+        width: 83px;
+        height: 67px;
+        border: 1px solid @grey-violet-200;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
-    .cardDetail > p {
-      margin-bottom: 0;
+
+    .jobCompanyTitles {
+      margin-left: 12px;
+
+      .positionTitle {
+        color: @grey-warm-600;
+      }
+
+      .companySubheader {
+        color: @grey-warm-400;
+      }
     }
+  }
+
+  .jobInfoDesktop {
+    display: none;
+    @media @desktop-medium {
+      flex-direction: row;
+      display: flex;
+    }
+    .wrapCompanyLogo {
+      width: 109px;
+      height: 100px;
+      border: 1px solid @grey-violet-200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+    }
+
+      .positionTitle {
+        color: @grey-warm-600;
+      }
+
+      .companySubheader {
+        color: @grey-warm-400;
+      }
+    }
+
+}
+
+.cardDetails {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 15px;
+  margin: 16px 0;
+  @media @desktop-medium {
+    margin: 16px 0 0 0;
+  }
+
+  .cardDetail {
+    background-color: @grey-violet-050;
+    border: 1px solid @grey-violet-300;
+    border-radius: 4px;
+    padding: 4px 8px;
+
+    .detailTitle {
+      color: @grey-warm-400;
+    }
+
+    .detailInfo {
+      color: @grey-warm-600;
+    }
+  }
+
+  .cardDetail > p {
+    margin-bottom: 0;
   }
 }
+
+.applyButton {
+  @media @desktop-medium {
+    height: 31px;
+    width: 159px;
+  }
+}
+
 .modalTitle {
   color: @grey-warm-600;
 }

@@ -70,17 +70,14 @@ const JobsList: React.FC = () => {
   return (
     <div className={styles.wrapJobsList}>
       <div style={{ width: '100%' }}>
-        <Form
-          name="searchJobs"
-          form={form}
-          onFinish={(values) => onFinish(values.search)}
-          layout="vertical"
-        >
-          <Form.Item name="search" label="Search for a job">
+        <Form name="searchJobs" form={form} onFinish={(values) => onFinish(values.search)} layout="vertical">
+          <Form.Item name="search" label="Search for a job" className="main-body-text">
             <Input placeholder="Enter keyword" />
           </Form.Item>
         </Form>
-        {jobs && `Showing ${jobs.length} of ${totalJobs} job posts`}
+        {jobs && (
+          <div className={`h4 ${styles.jobsMessage}`}>{`Showing ${jobs.length} of ${totalJobs} job posts`}</div>
+        )}
       </div>
       <div className={styles.jobsList}>
         {jobs ? (
