@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
 import { Form, Input } from 'antd';
 import loginUser from '@services/login/login-http.service';
+import useNotification from '@hooks/notification/useNotification';
+import StateEnum from '@constants/state.enum';
 import UiButton from '@components/ui/button/UiButton';
 import styles from './Login.module.less';
 
 const Login: React.FC = () => {
-  // const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
+
+  const [generalError] = useNotification(
+    StateEnum.ERROR,
+    'Something went wrong',
+    'Oops, something went wrong, please try again later!',
+  );
 
   type LoginValues = {
     email: string;
     password: string;
   };
+
   const onFinish = async (values: LoginValues) => {
     try {
       setLoading(true);
@@ -20,24 +28,14 @@ const Login: React.FC = () => {
       window.location.assign('/');
       setLoading(false);
     } catch (requestError: any) {
+      generalError();
       setLoading(false);
     }
   };
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
-  };
-
   return (
     <div className={styles.wrapForm}>
-      <Form
-        name="login"
-        layout="vertical"
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
-        className={styles.formElement}
-      >
+      <Form name="login" layout="vertical" onFinish={onFinish} autoComplete="off" className={styles.formElement}>
         <Form.Item
           label="Enter your email"
           name="email"

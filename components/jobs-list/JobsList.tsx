@@ -4,6 +4,8 @@ import Jobs, { JobModel } from '@models/jobs';
 import JobCard from '@components/jobs-list/job-card/JobCard';
 import listJobs from '@services/jobs/jobs-http.service';
 import { useInView } from 'react-intersection-observer';
+import useNotification from '@hooks/notification/useNotification';
+import StateEnum from '@constants/state.enum';
 import styles from './JobsList.module.less';
 
 const JobsList: React.FC = () => {
@@ -13,6 +15,12 @@ const JobsList: React.FC = () => {
   const [totalJobs, setTotalJobs] = useState(1);
   const [queryParam, setQueryParam] = useState<string>('');
   const [jobs, setJobs] = useState<Array<JobModel>>();
+
+  const [generalError] = useNotification(
+    StateEnum.ERROR,
+    'Something went wrong',
+    'Oops, something went wrong, please try again later!',
+  );
 
   const [ref, inView] = useInView({
     threshold: 0.1,
@@ -30,7 +38,7 @@ const JobsList: React.FC = () => {
         }
         setTotalPages(jobsList.totalPages);
       } catch (requestError: any) {
-        console.log('Fail');
+        generalError();
       }
     }
   };
@@ -63,7 +71,7 @@ const JobsList: React.FC = () => {
       setTotalJobs(jobsList.totalCount);
       setTotalPages(jobsList.totalPages);
     } catch (requestError: any) {
-      console.log('Fail');
+      generalError();
     }
   };
 
@@ -75,9 +83,7 @@ const JobsList: React.FC = () => {
             <Input placeholder="Enter keyword" />
           </Form.Item>
         </Form>
-        {jobs && (
-          <div className={`h4 ${styles.jobsMessage}`}>{`Showing ${jobs.length} of ${totalJobs} job posts`}</div>
-        )}
+        {jobs && <div className={`h4 ${styles.jobsMessage}`}>{`Showing ${jobs.length} of ${totalJobs} job posts`}</div>}
       </div>
       <div className={styles.jobsList}>
         {jobs ? (
