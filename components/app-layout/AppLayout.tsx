@@ -48,6 +48,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
               type="primary"
               size="small"
               onClick={() => {
+                localStorage.removeItem('user');
                 localStorage.removeItem('jwt');
                 window.location.assign('/login');
               }}

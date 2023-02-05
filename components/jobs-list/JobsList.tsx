@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Image, Input, Spin } from 'antd';
 import Jobs, { JobModel } from '@models/jobs';
+import User from '@models/user';
 import JobCard from '@components/jobs-list/job-card/JobCard';
 import listJobs from '@services/jobs/jobs-http.service';
 import { useInView } from 'react-intersection-observer';
@@ -14,6 +15,7 @@ const JobsList: React.FC = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [totalJobs, setTotalJobs] = useState(1);
   const [queryParam, setQueryParam] = useState<string>('');
+  const [user, setUser] = useState<User>();
   const [jobs, setJobs] = useState<Array<JobModel>>();
 
   const [generalError] = useNotification(
@@ -58,6 +60,8 @@ const JobsList: React.FC = () => {
 
   useEffect(() => {
     fetchJobs(page);
+    const userElem: string = localStorage.getItem('user')!;
+    setUser(JSON.parse(userElem));
   }, [page]);
 
   const onFinish = async (searchValue: string) => {
@@ -77,6 +81,7 @@ const JobsList: React.FC = () => {
 
   return (
     <div className={styles.wrapJobsList}>
+      Hello {user?.email}
       <div style={{ width: '100%' }}>
         <Form name="searchJobs" form={form} onFinish={(values) => onFinish(values.search)} layout="vertical">
           <Form.Item name="search" label="Search for a job" className="main-body-text">

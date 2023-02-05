@@ -1,8 +1,9 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import React from 'react';
+import React, { useEffect } from 'react';
 import getConfig from 'next/config';
 import AppLayout from '@components/app-layout/AppLayout';
+import Router from 'next/router';
 import '../styles/global.css';
 
 require('../styles/index.less');
@@ -12,6 +13,13 @@ const {
 } = getConfig();
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (window.location.pathname !== '/login' && !storedUser) {
+      Router.push('/login');
+    }
+  }, []);
+
   return (
     <>
       <Head>
