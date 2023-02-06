@@ -29,7 +29,7 @@ const JobModal: React.FC<JobModalProps> = ({ jobId }) => {
       const jobElem: JobModel = await getJob(jobId.toString());
       setJob(jobElem);
     } catch (requestError: any) {
-      console.log('Fail');
+      if (requestError.response.statusText !== 'Unauthorized') generalError();
     }
   };
 
@@ -42,7 +42,7 @@ const JobModal: React.FC<JobModalProps> = ({ jobId }) => {
       await postToJob(jobId, form.getFieldValue('yearsOfExperience'));
       window.location.assign('/thank-you');
     } catch (requestError: any) {
-      generalError();
+      if (requestError.response.statusText !== 'Unauthorized') generalError();
     }
   };
 

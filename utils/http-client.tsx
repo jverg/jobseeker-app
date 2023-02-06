@@ -29,8 +29,9 @@ instance.interceptors.response.use(
   function (error: AxiosError) {
     const [authorizationWarning] = useNotification(
       StateEnum.WARNING,
-      'You session has been expired',
-      'Ooops, your seession has been expired, please, login again to continue.',
+      'You have no access to see this page',
+      'Oops, your session has been expired or you have no access to see this page.' +
+        'Please, login to see the details of the page.',
     );
     if (error.response?.statusText === 'Unauthorized') {
       Router.push('/login');

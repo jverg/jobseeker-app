@@ -40,7 +40,7 @@ const JobsList: React.FC = () => {
         }
         setTotalPages(jobsList.totalPages);
       } catch (requestError: any) {
-        generalError();
+        if (requestError.response.statusText !== 'Unauthorized') generalError();
       }
     }
   };
@@ -81,7 +81,7 @@ const JobsList: React.FC = () => {
       await setTotalJobs(jobsList.totalCount);
       await setTotalPages(jobsList.totalPages);
     } catch (requestError: any) {
-      generalError();
+      if (requestError.response.statusText !== 'Unauthorized') generalError();
     }
   };
 

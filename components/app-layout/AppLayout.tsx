@@ -38,6 +38,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
                   src="/assets/svgs/globe-icon.svg"
                   alt="Globe icon"
                   className={styles.globeImage}
+                  data-testid="globe-icon-test"
                 />
                 <Image
                   preview={false}
