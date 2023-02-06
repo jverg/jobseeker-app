@@ -59,21 +59,27 @@ const JobsList: React.FC = () => {
   }, [inView]);
 
   useEffect(() => {
-    fetchJobs(page);
+    fetchJobs(1);
     const userElem: string = localStorage.getItem('user')!;
     setUser(JSON.parse(userElem));
+  }, []);
+
+  useEffect(() => {
+    if (page !== 1) {
+      fetchJobs(page);
+    }
   }, [page]);
 
   const onFinish = async (searchValue: string) => {
-    setPage(1);
-    setJobs([]);
-    setTotalJobs(1);
-    setQueryParam(searchValue);
     try {
+      await setPage(1);
+      await setJobs([]);
+      await setTotalJobs(1);
+      await setQueryParam(searchValue);
       const jobsList: Jobs = await listJobs(1, searchValue);
-      setJobs(jobsList.items);
-      setTotalJobs(jobsList.totalCount);
-      setTotalPages(jobsList.totalPages);
+      await setJobs(jobsList.items);
+      await setTotalJobs(jobsList.totalCount);
+      await setTotalPages(jobsList.totalPages);
     } catch (requestError: any) {
       generalError();
     }
