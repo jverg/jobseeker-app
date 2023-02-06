@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout, Image, Dropdown } from 'antd';
 import UiButton from '@components/ui/button/UiButton';
 import type { MenuProps } from 'antd';
+import { useRouter } from 'next/router';
 import styles from './AppLayout.module.less';
 
 const { Header, Content } = Layout;
@@ -9,6 +10,8 @@ const { Header, Content } = Layout;
 type AppLayoutProps = { children: React.ReactNode };
 
 const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
+  const router = useRouter();
+
   const items: MenuProps['items'] = [
     {
       label: 'Ελληνικά',
@@ -44,17 +47,19 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
                 />
               </div>
             </Dropdown>
-            <UiButton
-              type="primary"
-              size="small"
-              onClick={() => {
-                localStorage.removeItem('user');
-                localStorage.removeItem('jwt');
-                window.location.assign('/login');
-              }}
-            >
-              Logout
-            </UiButton>
+            {router.pathname !== '/login' && (
+              <UiButton
+                type="primary"
+                size="small"
+                onClick={() => {
+                  localStorage.removeItem('user');
+                  localStorage.removeItem('jwt');
+                  window.location.assign('/login');
+                }}
+              >
+                Logout
+              </UiButton>
+            )}
           </div>
         </Header>
       </Layout>
