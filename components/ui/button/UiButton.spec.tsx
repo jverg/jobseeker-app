@@ -7,12 +7,12 @@ describe('UiButton', () => {
     cleanup();
   });
   it('should render the button', () => {
-    render(<UiButton>test</UiButton>);
+    render(<UiButton onClick={jest.fn()}>test</UiButton>);
 
     expect(screen.getByText('test')).toBeInTheDocument();
   });
   it('should render a given className', () => {
-    const { container } = render(<UiButton className="test-class" />);
+    const { container } = render(<UiButton onClick={jest.fn()} className="test-class" />);
 
     expect(container.querySelector('.test-class')).toBeInTheDocument();
   });
@@ -24,7 +24,7 @@ describe('UiButton', () => {
     expect(testOnClick).toHaveBeenCalled();
   });
   it('should check default UiButton without any params', () => {
-    render(<UiButton>test</UiButton>);
+    render(<UiButton onClick={jest.fn()}>test</UiButton>);
     fireEvent.click(screen.getByText('test'));
   });
 });
