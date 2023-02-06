@@ -1,5 +1,8 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosError } from 'axios';
 import getConfig from 'next/config';
+import Router from 'next/router';
+import useNotification from '@hooks/notification/useNotification';
+import StateEnum from '@constants/state.enum';
 
 const {
   publicRuntimeConfig: { BACKEND_URL },
@@ -24,6 +27,16 @@ instance.interceptors.response.use(
   },
   // eslint-disable-next-line func-names
   function (error: AxiosError) {
+    const [authorizationWarning] = useNotification(
+      StateEnum.WARNING,
+      'You session has been expired',
+      'Ooops, your seession has been expired, please, login again to continue.',
+    );
+    if (error.response?.statusText === 'Unauthorized') {
+      Router.push('/login');
+      authorizationWarning();
+    }
+
     /**
      * Return the data for all 422, 428, 404, 400 statuses in order to
      * catch the messages from data
