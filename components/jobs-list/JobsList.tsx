@@ -4,6 +4,7 @@ import Jobs, { JobModel } from '@models/jobs';
 import User from '@models/user';
 import JobCard from '@components/jobs-list/job-card/JobCard';
 import listJobs from '@services/jobs/jobs-http.service';
+import DotIcon from '@assets/svgs/dot-icon.svg';
 import { useInView } from 'react-intersection-observer';
 import useNotification from '@hooks/notification/useNotification';
 import StateEnum from '@constants/state.enum';
@@ -87,7 +88,12 @@ const JobsList: React.FC = () => {
 
   return (
     <div className={styles.wrapJobsList}>
-      Hello {user?.email}
+      <div className={styles.wrapUserIntro}>
+        <div className={styles.userIntro}>
+          <div>Hello</div>
+          <div>{user?.email}</div>
+        </div>
+      </div>
       <div style={{ width: '100%' }}>
         <Form name="searchJobs" form={form} onFinish={(values) => onFinish(values.search)} layout="vertical">
           <Form.Item name="search" label="Search for a job" className="main-body-text">
@@ -107,7 +113,17 @@ const JobsList: React.FC = () => {
       </div>
       {page <= totalPages && (
         <div ref={ref} className={`h6 ${styles.loadingMore}`}>
-          <Image preview={false} src="/assets/svgs/loading-dot-icon.svg" alt="Loading dots" />
+          <div className={styles.dots}>
+            <div className={styles.dot1}>
+              <DotIcon />
+            </div>
+            <div className={styles.dot2}>
+              <DotIcon />
+            </div>
+            <div className={styles.dot3}>
+              <DotIcon />
+            </div>
+          </div>
           <div className={styles.loadingText}>loading more jobs</div>
         </div>
       )}

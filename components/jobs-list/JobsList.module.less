@@ -12,6 +12,23 @@
   @media @desktop-medium {
     min-width: 728px;
   }
+  .wrapUserIntro {
+    width: 100%;
+    display: flex;
+    margin-bottom: 19px;
+
+    .userIntro {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 19px;
+      border-bottom: 1px solid #000000;
+      width: 100%;
+
+      @media @desktop-medium {
+        width: 50%;
+      }
+    }
+  }
   .jobsMessage {
     margin: 18px 0;
   }
@@ -33,6 +50,47 @@
     padding: 27px 0;
     .loadingText {
       margin-left: 16px;
+    }
+  }
+  .dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dot1 {
+    height: 7px;
+    width: 7px;
+    margin: 0 4px;
+    animation: upAndDown 0.5s ease-in-out infinite;
+  }
+  .dot2 {
+    height: 7px;
+    width: 7px;
+    margin: 0 4px;
+    animation: upAndDown2 0.5s ease-in-out infinite;
+  }
+  .dot3 {
+    height: 7px;
+    width: 7px;
+    margin: 0 4px;
+    animation: upAndDown 0.5s ease-in-out infinite;
+  }
+
+  @keyframes upAndDown {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  @keyframes upAndDown2 {
+    0%, 100% {
+      transform: translateY(-5px);
+    }
+    50% {
+      transform: translateY(0px);
     }
   }
 }
