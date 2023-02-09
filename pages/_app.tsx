@@ -1,6 +1,8 @@
+import React, { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import React, { useEffect } from 'react';
+import { appWithTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import getConfig from 'next/config';
 import AppLayout from '@components/app-layout/AppLayout';
 import Router from 'next/router';
@@ -45,4 +47,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export const getServerSideProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['common'])),
+  },
+});
+
+export default appWithTranslation(MyApp);

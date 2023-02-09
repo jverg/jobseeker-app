@@ -3,10 +3,12 @@ import { Form, Input } from 'antd';
 import loginUser from '@services/login/login-http.service';
 import useNotification from '@hooks/notification/useNotification';
 import StateEnum from '@constants/state.enum';
+import { useTranslation } from 'next-i18next';
 import UiButton from '@components/ui/button/UiButton';
 import styles from './Login.module.less';
 
 const Login: React.FC = () => {
+  const { t: translate } = useTranslation('common');
   const [loading, setLoading] = useState(false);
 
   const [generalError] = useNotification(
@@ -38,7 +40,7 @@ const Login: React.FC = () => {
     <div className={styles.wrapForm}>
       <Form name="login" layout="vertical" onFinish={onFinish} autoComplete="off" className={styles.formElement}>
         <Form.Item
-          label="Enter your email"
+          label={translate('enter_your_email')}
           name="email"
           rules={[{ required: true, message: 'Please input your email!' }]}
         >
@@ -53,7 +55,7 @@ const Login: React.FC = () => {
         </Form.Item>
         <Form.Item>
           <UiButton type="primary" size="small" htmlType="submit" onClick={() => {}}>
-            Login
+            {translate('login')}
           </UiButton>
         </Form.Item>
       </Form>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout, Image, Dropdown } from 'antd';
 import UiButton from '@components/ui/button/UiButton';
 import type { MenuProps } from 'antd';
+import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import styles from './AppLayout.module.less';
 
@@ -10,16 +11,17 @@ const { Header, Content } = Layout;
 type AppLayoutProps = { children: React.ReactNode };
 
 const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
+  const { t: translate } = useTranslation('common');
   const router = useRouter();
 
   const items: MenuProps['items'] = [
     {
-      label: 'Ελληνικά',
+      label: `${translate('greek')}`,
       key: '0',
       icon: <Image preview={false} src="/assets/svgs/greek-flag.svg" alt="Greek flag" />,
     },
     {
-      label: 'Αγγλικά',
+      label: `${translate('english')}`,
       key: '1',
       icon: <Image preview={false} src="/assets/svgs/greek-flag.svg" alt="Greek flag" />,
     },
@@ -58,7 +60,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
                   window.location.assign('/login');
                 }}
               >
-                Logout
+                {translate('logout')}
               </UiButton>
             )}
           </div>

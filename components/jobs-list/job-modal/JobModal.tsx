@@ -17,6 +17,7 @@ const JobModal: React.FC<JobModalProps> = ({ jobId }) => {
   const [form] = Form.useForm();
   const [job, setJob] = useState<JobModel>();
   const [disabled, setDisabled] = useState<boolean>(true);
+  const [awaitSuccess, setAwaitSuccess] = useState<boolean>(true);
 
   const [generalError] = useNotification(
     StateEnum.ERROR,
@@ -40,6 +41,7 @@ const JobModal: React.FC<JobModalProps> = ({ jobId }) => {
   const applyToJob = async () => {
     try {
       await postToJob(jobId, form.getFieldValue('yearsOfExperience'));
+      setAwaitSuccess(true);
       window.location.assign('/thank-you');
     } catch (requestError: any) {
       if (requestError.response.statusText !== 'Unauthorized') generalError();
@@ -56,6 +58,11 @@ const JobModal: React.FC<JobModalProps> = ({ jobId }) => {
         >
           <InputNumber onChange={(value) => setDisabled(!value)} />
         </Form.Item>
+        {disabled && (
+          <p className={`h6 ${styles.disabledMessage}`}>
+            Please give your experience in years in order to send your application
+          </p>
+        )}
       </Form>
     );
   };
@@ -69,19 +76,32 @@ const JobModal: React.FC<JobModalProps> = ({ jobId }) => {
           </div>
           <div className={styles.wrapJobDescription}>
             <HtmlRenderer html={job.description} className={styles.jobDescription} />
-            <ApplyToJobForm />
+            {job.validUntil > Date.now() && <ApplyToJobForm />}
           </div>
           <div className={styles.wrapSendApplicationButton}>
-            <UiButton
-              htmlType="submit"
-              type="primary"
-              size="small"
-              onClick={applyToJob}
-              className={styles.sendApplication}
-              disabled={disabled}
-            >
-              Send application
-            </UiButton>
+            {job.validUntil >= Date.now() ? (
+              <UiButton
+                htmlType="submit"
+                type="primary"
+                size="small"
+                onClick={applyToJob}
+                className={styles.sendApplication}
+                disabled={disabled || awaitSuccess}
+              >
+                {awaitSuccess ? <Spin /> : 'Send application'}
+              </UiButton>
+            ) : (
+              <UiButton
+                htmlType="submit"
+                type="primary"
+                size="small"
+                onClick={applyToJob}
+                className={styles.sendApplication}
+                disabled
+              >
+                Sorry, we do not accept applications right now
+              </UiButton>
+            )}
           </div>
         </div>
       ) : (
