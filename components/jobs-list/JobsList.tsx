@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Image, Input, Spin } from 'antd';
+import { Form, Input, Spin } from 'antd';
 import Jobs, { JobModel } from '@models/jobs';
 import User from '@models/user';
 import JobCard from '@components/jobs-list/job-card/JobCard';
 import listJobs from '@services/jobs/jobs-http.service';
 import DotIcon from '@assets/svgs/dot-icon.svg';
 import { useInView } from 'react-intersection-observer';
+import { useTranslation } from 'next-i18next';
 import useNotification from '@hooks/notification/useNotification';
 import StateEnum from '@constants/state.enum';
 import styles from './JobsList.module.less';
 
 const JobsList: React.FC = () => {
+  const { t: translate } = useTranslation('common');
   const [form] = Form.useForm();
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -90,17 +92,21 @@ const JobsList: React.FC = () => {
     <div className={styles.wrapJobsList}>
       <div className={styles.wrapUserIntro}>
         <div className={styles.userIntro}>
-          <div>Hello</div>
+          <div>{translate('jobs_list.hello')}</div>
           <div>{user?.email}</div>
         </div>
       </div>
       <div style={{ width: '100%' }}>
         <Form name="searchJobs" form={form} onFinish={(values) => onFinish(values.search)} layout="vertical">
-          <Form.Item name="search" label="Search for a job" className="main-body-text">
+          <Form.Item name="search" label={translate('jobs_list.search_for_job')} className="main-body-text">
             <Input placeholder="Enter keyword" />
           </Form.Item>
         </Form>
-        {jobs && <div className={`h4 ${styles.jobsMessage}`}>{`Showing ${jobs.length} of ${totalJobs} job posts`}</div>}
+        {jobs && (
+          <div className={`h4 ${styles.jobsMessage}`}>
+            {translate('jobs_list.showing_message', { jobsLength: jobs.length, totalJobs })}
+          </div>
+        )}
       </div>
       <div className={styles.jobsList}>
         {jobs ? (
@@ -124,7 +130,7 @@ const JobsList: React.FC = () => {
               <DotIcon />
             </div>
           </div>
-          <div className={styles.loadingText}>loading more jobs</div>
+          <div className={styles.loadingText}>{translate('jobs_list.jobs_loading')}</div>
         </div>
       )}
     </div>

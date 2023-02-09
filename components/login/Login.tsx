@@ -9,7 +9,7 @@ import Router from 'next/router';
 import styles from './Login.module.less';
 
 const Login: React.FC = () => {
-  const { t: translate } = useTranslation(['common']);
+  const { t: translate, i18n } = useTranslation(['common']);
   const [loading, setLoading] = useState(false);
 
   const [wrongCredentials] = useNotification(
@@ -29,7 +29,7 @@ const Login: React.FC = () => {
       const token = await loginUser(values.email, values.password);
       localStorage.setItem('user', JSON.stringify(token.user));
       localStorage.setItem('jwt', token.token.accessToken);
-      window.location.assign('/');
+      window.location.assign(`/${i18n.language}`);
       setLoading(false);
     } catch (requestError: any) {
       wrongCredentials();
@@ -41,22 +41,22 @@ const Login: React.FC = () => {
     <div className={styles.wrapForm}>
       <Form name="login" layout="vertical" onFinish={onFinish} autoComplete="off" className={styles.formElement}>
         <Form.Item
-          label={translate('enter_your_email')}
+          label={translate('login.enter_your_email')}
           name="email"
-          rules={[{ required: true, message: 'Please input your email!' }]}
+          rules={[{ required: true, message: translate('login.plz_input_email') }]}
         >
           <Input disabled={loading} placeholder="johndoe@email.com" data-testid="email-input" />
         </Form.Item>
         <Form.Item
-          label="Password"
+          label={translate('login.password')}
           name="password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
+          rules={[{ required: true, message: translate('login.plz_input_password') }]}
         >
           <Input.Password disabled={loading} data-testid="password-input" />
         </Form.Item>
         <Form.Item>
           <UiButton type="primary" size="small" htmlType="submit" onClick={() => {}}>
-            {translate('login')}
+            {translate('login.login')}
           </UiButton>
         </Form.Item>
       </Form>

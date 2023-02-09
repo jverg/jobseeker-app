@@ -1,10 +1,27 @@
 {
-  "enter_your_email": "Enter your email",
-  "password": "Password",
-  "login": "Login",
-  "logout": "Logout",
-  "greek": "Greek",
-  "english": "English",
+  "login": {
+    "enter_your_email": "Enter your email",
+    "password": "Password",
+    "login": "Login",
+    "plz_input_password": "Please input your password!",
+    "plz_input_email": "Please input your email!"
+  },
+  "layout": {
+    "logout": "Logout",
+    "greek": "Greek",
+    "english": "English"
+  },
+  "jobs_list": {
+    "search_for_job": "Search for a job",
+    "hello": "Hello,",
+    "showing_message": "Showing {{jobsLength}} of {{totalJobs}} job posts",
+    "jobs_loading": "loading more jobs"
+  },
+  "job_card": {
+    "location": "Location",
+    "date_posted": "Date Posted",
+    "apply_now": "Apply now"
+  },
   "notifications": {
     "wrong_credentials": "Wrong credentials",
     "wrong_credentials_try_again": "Oops, it seems that you gave wrong credentials, please try again!"

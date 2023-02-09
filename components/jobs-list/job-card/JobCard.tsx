@@ -4,6 +4,7 @@ import dayMonthFormat from '@constants/date-format';
 import UiButton from '@components/ui/button/UiButton';
 import JobModal from '@components/jobs-list/job-modal/JobModal';
 import { JobModel } from '@models/jobs';
+import { useTranslation } from 'next-i18next';
 import styles from './JobCard.module.less';
 
 type JobCardProps = {
@@ -12,6 +13,7 @@ type JobCardProps = {
 };
 
 const JobCard: React.FC<JobCardProps> = ({ job, action }) => {
+  const { t: translate } = useTranslation('common');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -26,7 +28,7 @@ const JobCard: React.FC<JobCardProps> = ({ job, action }) => {
     return (
       <div className={styles.cardDetails}>
         <div className={styles.cardDetail}>
-          <h6 className={`h6 ${styles.detailTitle}`}>Date Posted</h6>
+          <h6 className={`h6 ${styles.detailTitle}`}>{translate('job_card.date_posted')}</h6>
           <p className={`main-body-text ${styles.detailInfo}`}>{dayMonthFormat(job.createdAt)}</p>
         </div>
         <div className={styles.cardDetail}>
@@ -34,7 +36,7 @@ const JobCard: React.FC<JobCardProps> = ({ job, action }) => {
           <p className={`main-body-text ${styles.detailInfo}`}>{dayMonthFormat(job.validUntil)}</p>
         </div>
         <div className={styles.cardDetail}>
-          <h6 className={`h6 ${styles.detailTitle}`}>Location</h6>
+          <h6 className={`h6 ${styles.detailTitle}`}>{translate('job_card.location')}</h6>
           <p className={`main-body-text ${styles.detailInfo}`}>{job.address}</p>
         </div>
       </div>
@@ -89,7 +91,7 @@ const JobCard: React.FC<JobCardProps> = ({ job, action }) => {
       <DesktopCardHeader />
       {action && (
         <UiButton type="primary" size="small" onClick={showModal} className={styles.applyButton}>
-          Apply now
+          {translate('job_card.apply_now')}
         </UiButton>
       )}
       <Modal

@@ -11,19 +11,21 @@ const { Header, Content } = Layout;
 type AppLayoutProps = { children: React.ReactNode };
 
 const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
-  const { t: translate } = useTranslation('common');
+  const { t: translate, i18n } = useTranslation('common');
   const router = useRouter();
 
   const items: MenuProps['items'] = [
     {
-      label: `${translate('greek')}`,
+      label: `${translate('layout.greek')}`,
       key: '0',
       icon: <Image preview={false} src="/assets/svgs/greek-flag.svg" alt="Greek flag" />,
+      onClick: () => router.push(`/el${router.pathname}`),
     },
     {
-      label: `${translate('english')}`,
+      label: `${translate('layout.english')}`,
       key: '1',
       icon: <Image preview={false} src="/assets/svgs/greek-flag.svg" alt="Greek flag" />,
+      onClick: () => router.push(`/en${router.asPath}`),
     },
   ];
 
@@ -57,10 +59,10 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
                 onClick={() => {
                   localStorage.removeItem('user');
                   localStorage.removeItem('jwt');
-                  window.location.assign('/login');
+                  window.location.assign(`/${i18n.language}/login`);
                 }}
               >
-                {translate('logout')}
+                {translate('layout.logout')}
               </UiButton>
             )}
           </div>

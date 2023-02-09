@@ -1,10 +1,27 @@
 {
-  "enter_your_email": "Βάλε το email σου",
-  "password": "Κωδικός πρόσβασης",
-  "login": "Είσοδος",
-  "logout": "Αποσύνδεση",
-  "greek": "Ελληνικά",
-  "english": "Αγγλικά",
+  "login": {
+    "enter_your_email": "Βάλε το email σου",
+    "password": "Κωδικός πρόσβασης",
+    "login": "Είσοδος",
+    "plz_input_password": "Παρακαλώ δώστε ένα password!",
+    "plz_input_email": "Παρακαλώ δώστε ένα email!"
+  },
+  "layout": {
+    "logout": "Αποσύνδεση",
+    "greek": "Ελληνικά",
+    "english": "Αγγλικά"
+  },
+  "jobs_list": {
+    "search_for_job": "Αναζήτηση θέσης",
+    "hello": "Γειά σου,",
+    "showing_message": "Εμφανίζονται {{jobsLength}} από {{totalJobs}} συνολικά θέσεις εργασίας",
+    "jobs_loading": "φόρτωση περισσότερων θέσεων"
+  },
+  "job_card": {
+    "location": "Περιοχή",
+    "date_posted": "Ημ/νία δημοσ.",
+    "apply_now": "Αίτηση"
+  },
   "notifications": {
     "wrong_credentials": "Λάθος στοιχεία",
     "wrong_credentials_try_again": "Ούπς, φαίνεται να έδωσες  λάθος στοιχεία σύνδεσης, παρακαλώ προσπαθήστε ξανά!"
