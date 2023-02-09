@@ -33,7 +33,7 @@ instance.interceptors.response.use(
       'Oops, your session has been expired or you have no access to see this page.' +
         'Please, login to see the details of the page.',
     );
-    if (error.response?.statusText === 'Unauthorized') {
+    if (error.response?.statusText === 'Unauthorized' && error.response.config.url !== '/login') {
       Router.push('/login');
       authorizationWarning();
     }

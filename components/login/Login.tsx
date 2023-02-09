@@ -5,16 +5,17 @@ import useNotification from '@hooks/notification/useNotification';
 import StateEnum from '@constants/state.enum';
 import { useTranslation } from 'next-i18next';
 import UiButton from '@components/ui/button/UiButton';
+import Router from 'next/router';
 import styles from './Login.module.less';
 
 const Login: React.FC = () => {
-  const { t: translate } = useTranslation('common');
+  const { t: translate } = useTranslation(['common']);
   const [loading, setLoading] = useState(false);
 
-  const [generalError] = useNotification(
-    StateEnum.ERROR,
-    'Something went wrong',
-    'Oops, something went wrong, please try again later!',
+  const [wrongCredentials] = useNotification(
+    StateEnum.INFO,
+    translate('notifications.wrong_credentials'),
+    translate('notifications.wrong_credentials_try_again'),
   );
 
   type LoginValues = {
@@ -31,7 +32,7 @@ const Login: React.FC = () => {
       window.location.assign('/');
       setLoading(false);
     } catch (requestError: any) {
-      generalError();
+      wrongCredentials();
       setLoading(false);
     }
   };
@@ -44,14 +45,14 @@ const Login: React.FC = () => {
           name="email"
           rules={[{ required: true, message: 'Please input your email!' }]}
         >
-          <Input disabled={loading} placeholder="johndoe@email.com" />
+          <Input disabled={loading} placeholder="johndoe@email.com" data-testid="email-input" />
         </Form.Item>
         <Form.Item
           label="Password"
           name="password"
           rules={[{ required: true, message: 'Please input your password!' }]}
         >
-          <Input.Password disabled={loading} />
+          <Input.Password disabled={loading} data-testid="password-input" />
         </Form.Item>
         <Form.Item>
           <UiButton type="primary" size="small" htmlType="submit" onClick={() => {}}>

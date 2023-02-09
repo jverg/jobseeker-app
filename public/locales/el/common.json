@@ -4,5 +4,9 @@
   "login": "Είσοδος",
   "logout": "Αποσύνδεση",
   "greek": "Ελληνικά",
-  "english": "Αγγλικά"
+  "english": "Αγγλικά",
+  "notifications": {
+    "wrong_credentials": "Λάθος στοιχεία",
+    "wrong_credentials_try_again": "Ούπς, φαίνεται να έδωσες  λάθος στοιχεία σύνδεσης, παρακαλώ προσπαθήστε ξανά!"
+  }
 }

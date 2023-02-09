@@ -17,7 +17,7 @@ const JobModal: React.FC<JobModalProps> = ({ jobId }) => {
   const [form] = Form.useForm();
   const [job, setJob] = useState<JobModel>();
   const [disabled, setDisabled] = useState<boolean>(true);
-  const [awaitSuccess, setAwaitSuccess] = useState<boolean>(true);
+  const [awaitSuccess, setAwaitSuccess] = useState<boolean>(false);
 
   const [generalError] = useNotification(
     StateEnum.ERROR,

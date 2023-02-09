@@ -4,5 +4,9 @@
   "login": "Login",
   "logout": "Logout",
   "greek": "Greek",
-  "english": "English"
+  "english": "English",
+  "notifications": {
+    "wrong_credentials": "Wrong credentials",
+    "wrong_credentials_try_again": "Oops, it seems that you gave wrong credentials, please try again!"
+  }
 }
