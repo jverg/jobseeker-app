@@ -10,7 +10,6 @@ import { useTranslation } from 'next-i18next';
 import HtmlRenderer from '@components/ui/html-renderer/HtmlRenderer';
 import styles from './JobModal.module.less';
 
-
 type JobModalProps = {
   jobId: number;
 };
@@ -54,18 +53,10 @@ const JobModal: React.FC<JobModalProps> = ({ jobId }) => {
   const ApplyToJobForm = () => {
     return (
       <Form name="jobApply" layout="vertical" autoComplete="off" form={form}>
-        <Form.Item
-          label="How many years of experience?"
-          name="yearsOfExperience"
-          rules={[{ required: true, message: 'Please input your years of experience' }]}
-        >
+        <Form.Item label={translate('job_modal.years_of_experience')} name="yearsOfExperience">
           <InputNumber onChange={(value) => setDisabled(!value)} />
         </Form.Item>
-        {disabled && (
-          <p className={`h6 ${styles.disabledMessage}`}>
-            Please give your experience in years in order to send your application
-          </p>
-        )}
+        {disabled && <p className={`h6 ${styles.disabledMessage}`}>{translate('job_modal.give_your_experience')}</p>}
       </Form>
     );
   };

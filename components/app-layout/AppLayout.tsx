@@ -25,7 +25,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       label: `${translate('layout.english')}`,
       key: '1',
       icon: <Image preview={false} src="/assets/svgs/greek-flag.svg" alt="Greek flag" />,
-      onClick: () => router.push(`/en${router.asPath}`),
+      onClick: () => router.push(`/en${router.pathname}`),
     },
   ];
 

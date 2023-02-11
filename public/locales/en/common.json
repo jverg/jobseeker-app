@@ -15,16 +15,21 @@
     "search_for_job": "Search for a job",
     "hello": "Hello,",
     "showing_message": "Showing {{jobsLength}} of {{totalJobs}} job posts",
-    "jobs_loading": "loading more jobs"
+    "jobs_loading": "loading more jobs",
+    "enter_keyword": "Enter keyword"
   },
   "job_card": {
     "location": "Location",
     "date_posted": "Date Posted",
-    "apply_now": "Apply now"
+    "apply_now": "Apply now",
+    "apply_until": "Apply until",
+    "apply_for_job": "Apply for the Job"
   },
   "job_modal": {
     "send_application": "Send application",
-    "not_accept_applications": "Sorry, we do not accept applications right now"
+    "not_accept_applications": "Sorry, we do not accept applications right now",
+    "give_your_experience": "Please give your experience in years in order to send your application",
+    "years_of_experience": "How many years of experience?"
   },
   "notifications": {
     "wrong_credentials": "Wrong credentials",

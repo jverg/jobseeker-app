@@ -32,7 +32,7 @@ const JobCard: React.FC<JobCardProps> = ({ job, action }) => {
           <p className={`main-body-text ${styles.detailInfo}`}>{dayMonthFormat(job.createdAt)}</p>
         </div>
         <div className={styles.cardDetail}>
-          <h6 className={`h6 ${styles.detailTitle}`}>Apply until</h6>
+          <h6 className={`h6 ${styles.detailTitle}`}>{translate('job_card.apply_until')}</h6>
           <p className={`main-body-text ${styles.detailInfo}`}>{dayMonthFormat(job.validUntil)}</p>
         </div>
         <div className={styles.cardDetail}>
@@ -95,7 +95,7 @@ const JobCard: React.FC<JobCardProps> = ({ job, action }) => {
         </UiButton>
       )}
       <Modal
-        title={<div className={`h5 ${styles.modalTitle}`}>Apply for the Job</div>}
+        title={<div className={`h5 ${styles.modalTitle}`}>{translate('job_card.apply_for_job')}</div>}
         open={isModalOpen}
         onCancel={handleCancel}
         footer={null}

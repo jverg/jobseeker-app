@@ -21,6 +21,6 @@ describe('Job card component', () => {
     expect(screen.queryAllByText('Test job title')[0]).toBeInTheDocument();
     expect(screen.getByText('job_card.apply_now')).toBeInTheDocument();
     fireEvent.click(screen.getByText('job_card.apply_now'));
-    expect(screen.getByText('Apply for the Job')).toBeInTheDocument();
+    expect(screen.getByText('job_card.apply_for_job')).toBeInTheDocument();
   });
 });

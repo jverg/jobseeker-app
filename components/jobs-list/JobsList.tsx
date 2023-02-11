@@ -99,7 +99,7 @@ const JobsList: React.FC = () => {
       <div style={{ width: '100%' }}>
         <Form name="searchJobs" form={form} onFinish={(values) => onFinish(values.search)} layout="vertical">
           <Form.Item name="search" label={translate('jobs_list.search_for_job')} className="main-body-text">
-            <Input placeholder="Enter keyword" />
+            <Input placeholder={translate('jobs_list.enter_keyword')} />
           </Form.Item>
         </Form>
         {jobs && (

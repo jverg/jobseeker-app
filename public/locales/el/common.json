@@ -15,16 +15,21 @@
     "search_for_job": "Αναζήτηση θέσης",
     "hello": "Γειά σου,",
     "showing_message": "Εμφανίζονται {{jobsLength}} από {{totalJobs}} συνολικά θέσεις εργασίας",
-    "jobs_loading": "φόρτωση περισσότερων θέσεων"
+    "jobs_loading": "φόρτωση περισσότερων θέσεων",
+    "enter_keyword": "Αναζήτηση εργασίας"
   },
   "job_card": {
     "location": "Περιοχή",
     "date_posted": "Ημ/νία δημοσ.",
-    "apply_now": "Αίτηση"
+    "apply_now": "Αίτηση",
+    "apply_until": "Αποστολή μέχρι",
+    "apply_for_job": "Αίτηση για εργασία"
   },
   "job_modal": {
     "send_application": "Αποστολή αίτησης",
-    "not_accept_applications": "Συγνώμη, δεν δεχόμαστε άλλες αιτήσεις για αυτή την θέση, αυτή την περίοδο"
+    "not_accept_applications": "Συγνώμη, δεν δεχόμαστε άλλες αιτήσεις για αυτή την θέση, αυτή την περίοδο",
+    "give_your_experience": "Παρακαλώ δώστε την εμπειρία σας σε χρόνια για να μπορέσετε να στείλετε το βιογραφικό σας",
+    "years_of_experience": "Πόσα χρόνια εμπειρίας έχετε?"
   },
   "notifications": {
     "wrong_credentials": "Λάθος στοιχεία",
