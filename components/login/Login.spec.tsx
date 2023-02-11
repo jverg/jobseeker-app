@@ -9,7 +9,7 @@ describe('Login component', () => {
   });
   it('should render the login component', () => {
     render(<Login />);
-    expect(screen.getByText('enter_your_email')).toBeInTheDocument();
+    expect(screen.getByText('login.enter_your_email')).toBeInTheDocument();
   });
   it('should login a user', async () => {
     const axiosLoginPost = jest.spyOn(axiosInstance, 'post');
@@ -22,7 +22,7 @@ describe('Login component', () => {
     fireEvent.change(passwordInput, {
       target: { value: 'test@123!' },
     });
-    fireEvent.click(screen.getByText('login'));
+    fireEvent.click(screen.getByText('login.login'));
     await waitFor(() =>
       expect(axiosLoginPost).toHaveBeenCalledWith('/login', {
         email: 'email@email.com',

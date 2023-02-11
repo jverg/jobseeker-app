@@ -27,8 +27,8 @@ describe('App layout component', () => {
     );
     expect(screen.getByTestId('globe-icon-test')).toBeInTheDocument();
     fireEvent.click(screen.getByTestId('globe-icon-test'));
-    expect(screen.getByText('greek')).toBeInTheDocument();
-    expect(screen.getByText('english')).toBeInTheDocument();
+    expect(screen.getByText('layout.greek')).toBeInTheDocument();
+    expect(screen.getByText('layout.english')).toBeInTheDocument();
   });
   it('should render the children of app layout', () => {
     render(

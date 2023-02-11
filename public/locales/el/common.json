@@ -22,6 +22,10 @@
     "date_posted": "Ημ/νία δημοσ.",
     "apply_now": "Αίτηση"
   },
+  "job_modal": {
+    "send_application": "Αποστολή αίτησης",
+    "not_accept_applications": "Συγνώμη, δεν δεχόμαστε άλλες αιτήσεις για αυτή την θέση, αυτή την περίοδο"
+  },
   "notifications": {
     "wrong_credentials": "Λάθος στοιχεία",
     "wrong_credentials_try_again": "Ούπς, φαίνεται να έδωσες  λάθος στοιχεία σύνδεσης, παρακαλώ προσπαθήστε ξανά!"

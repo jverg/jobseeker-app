@@ -22,6 +22,10 @@
     "date_posted": "Date Posted",
     "apply_now": "Apply now"
   },
+  "job_modal": {
+    "send_application": "Send application",
+    "not_accept_applications": "Sorry, we do not accept applications right now"
+  },
   "notifications": {
     "wrong_credentials": "Wrong credentials",
     "wrong_credentials_try_again": "Oops, it seems that you gave wrong credentials, please try again!"

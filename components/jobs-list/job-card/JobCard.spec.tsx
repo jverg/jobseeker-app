@@ -14,13 +14,13 @@ describe('Job card component', () => {
   it('should render the job card component with the action button', () => {
     render(<JobCard job={jobElem} action />);
     expect(screen.queryAllByText('Test job title')[0]).toBeInTheDocument();
-    expect(screen.getByText('Apply now')).toBeInTheDocument();
+    expect(screen.getByText('job_card.apply_now')).toBeInTheDocument();
   });
   it('should open the job modal', () => {
     render(<JobCard job={jobElem} action />);
     expect(screen.queryAllByText('Test job title')[0]).toBeInTheDocument();
-    expect(screen.getByText('Apply now')).toBeInTheDocument();
-    fireEvent.click(screen.getByText('Apply now'));
+    expect(screen.getByText('job_card.apply_now')).toBeInTheDocument();
+    fireEvent.click(screen.getByText('job_card.apply_now'));
     expect(screen.getByText('Apply for the Job')).toBeInTheDocument();
   });
 });

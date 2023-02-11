@@ -6,14 +6,17 @@ import { getJob, postToJob } from '@services/jobs/jobs-http.service';
 import useNotification from '@hooks/notification/useNotification';
 import StateEnum from '@constants/state.enum';
 import UiButton from '@components/ui/button/UiButton';
+import { useTranslation } from 'next-i18next';
 import HtmlRenderer from '@components/ui/html-renderer/HtmlRenderer';
 import styles from './JobModal.module.less';
+
 
 type JobModalProps = {
   jobId: number;
 };
 
 const JobModal: React.FC<JobModalProps> = ({ jobId }) => {
+  const { t: translate } = useTranslation('common');
   const [form] = Form.useForm();
   const [job, setJob] = useState<JobModel>();
   const [disabled, setDisabled] = useState<boolean>(true);
@@ -88,7 +91,7 @@ const JobModal: React.FC<JobModalProps> = ({ jobId }) => {
                 className={styles.sendApplication}
                 disabled={disabled || awaitSuccess}
               >
-                {awaitSuccess ? <Spin /> : 'Send application'}
+                {awaitSuccess ? <Spin /> : translate('job_modal.send_application')}
               </UiButton>
             ) : (
               <UiButton
@@ -99,7 +102,7 @@ const JobModal: React.FC<JobModalProps> = ({ jobId }) => {
                 className={styles.sendApplication}
                 disabled
               >
-                Sorry, we do not accept applications right now
+                {translate('job_modal.not_accept_applications')}
               </UiButton>
             )}
           </div>
