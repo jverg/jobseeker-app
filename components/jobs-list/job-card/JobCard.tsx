@@ -13,7 +13,7 @@ type JobCardProps = {
 };
 
 const JobCard: React.FC<JobCardProps> = ({ job, action }) => {
-  const { t: translate } = useTranslation('common');
+  const { t: translate, i18n } = useTranslation('common');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -29,11 +29,11 @@ const JobCard: React.FC<JobCardProps> = ({ job, action }) => {
       <div className={styles.cardDetails}>
         <div className={styles.cardDetail}>
           <h6 className={`h6 ${styles.detailTitle}`}>{translate('job_card.date_posted')}</h6>
-          <p className={`main-body-text ${styles.detailInfo}`}>{dayMonthFormat(job.createdAt)}</p>
+          <p className={`main-body-text ${styles.detailInfo}`}>{dayMonthFormat(job.createdAt, i18n.language)}</p>
         </div>
         <div className={styles.cardDetail}>
           <h6 className={`h6 ${styles.detailTitle}`}>{translate('job_card.apply_until')}</h6>
-          <p className={`main-body-text ${styles.detailInfo}`}>{dayMonthFormat(job.validUntil)}</p>
+          <p className={`main-body-text ${styles.detailInfo}`}>{dayMonthFormat(job.validUntil, i18n.language)}</p>
         </div>
         <div className={styles.cardDetail}>
           <h6 className={`h6 ${styles.detailTitle}`}>{translate('job_card.location')}</h6>

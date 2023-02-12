@@ -27,7 +27,7 @@
   },
   "job_modal": {
     "send_application": "Send application",
-    "not_accept_applications": "Sorry, we do not accept applications right now",
+    "not_accept_applications": "Sorry, we do not accept applications right now, for this job",
     "give_your_experience": "Please give your experience in years in order to send your application",
     "years_of_experience": "How many years of experience?"
   },

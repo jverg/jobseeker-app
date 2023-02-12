@@ -1,15 +1,18 @@
 import React from 'react';
+import { useRouter } from 'next/router'
 import TickIcon from '@assets/svgs/tick-icon.svg';
+import { GetServerSideProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import styles from './index.module.less';
-import {GetServerSideProps} from "next";
-import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const HomePage: React.FC = () => {
+  const router = useRouter();
+
   return (
     <div className={styles.wrapThankYou}>
       <TickIcon />
-      <p className="h3">Application successful</p>
-      <p className="h3">Legacy Applications Representative</p>
+      <p className="roboto">Application successful</p>
+      <p className="roboto-bold">{router.query.title}</p>
     </div>
   );
 };

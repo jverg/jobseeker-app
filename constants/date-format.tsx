@@ -1,7 +1,9 @@
 import dayjs from 'dayjs';
 
-const dayMonthFormat = (date: number) => {
-  return dayjs(date).format('DD MMM YYYY');
+require('dayjs/locale/el');
+
+const dayMonthFormat = (date: number, lang: string) => {
+  return dayjs(date).locale(lang).format('DD MMM YYYY');
 };
 
 export default dayMonthFormat;

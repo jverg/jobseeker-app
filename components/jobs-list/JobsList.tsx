@@ -28,7 +28,7 @@ const JobsList: React.FC = () => {
   );
 
   const [ref, inView] = useInView({
-    threshold: 0.1,
+    threshold: 0,
   });
 
   const fetchJobs = async (pageNum: number) => {
@@ -92,8 +92,8 @@ const JobsList: React.FC = () => {
     <div className={styles.wrapJobsList}>
       <div className={styles.wrapUserIntro}>
         <div className={styles.userIntro}>
-          <div>{translate('jobs_list.hello')}</div>
-          <div>{user?.email}</div>
+          <div className="roboto-thin">{translate('jobs_list.hello')}</div>
+          <div className="roboto-main">{user?.email}</div>
         </div>
       </div>
       <div style={{ width: '100%' }}>

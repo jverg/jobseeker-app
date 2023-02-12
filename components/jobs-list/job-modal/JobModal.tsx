@@ -44,7 +44,7 @@ const JobModal: React.FC<JobModalProps> = ({ jobId }) => {
     try {
       await postToJob(jobId, form.getFieldValue('yearsOfExperience'));
       setAwaitSuccess(true);
-      window.location.assign('/thank-you');
+      window.location.assign(`/thank-you?title=${job?.title}`);
     } catch (requestError: any) {
       if (requestError.response.statusText !== 'Unauthorized') generalError();
     }
