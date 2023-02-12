@@ -3,6 +3,17 @@ import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import jobElem from '@mocks/jobs/jobs';
 import JobCard from './JobCard';
 
+jest.mock('dayjs/locale/el', () => {});
+jest.mock('dayjs', () => {
+  const mockDayjs = jest.fn(() => ({
+    format: jest.fn(),
+    locale: jest.fn(() => ({
+      format: jest.fn(),
+    })),
+  }));
+  return mockDayjs;
+});
+
 describe('Job card component', () => {
   afterAll(() => {
     cleanup();
