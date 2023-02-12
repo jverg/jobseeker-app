@@ -25,6 +25,9 @@
     "apply_until": "Αποστολή μέχρι",
     "apply_for_job": "Αίτηση για εργασία"
   },
+  "thank_you": {
+    "application_successful": "Η αιτησή σου στάλθηκε με επιτυχία"
+  },
   "job_modal": {
     "send_application": "Αποστολή αίτησης",
     "not_accept_applications": "Συγνώμη, δεν δεχόμαστε άλλες αιτήσεις για αυτή την θέση, αυτή την περίοδο",

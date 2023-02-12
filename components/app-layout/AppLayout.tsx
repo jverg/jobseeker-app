@@ -13,19 +13,25 @@ type AppLayoutProps = { children: React.ReactNode };
 const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   const { t: translate, i18n } = useTranslation('common');
   const router = useRouter();
+  const { pathname, asPath, query } = router;
+
+  const changeLanguage = (key: string) => {
+    document.cookie = `NEXT_LOCALE=${key}; path=/`;
+    router.push({ pathname, query }, asPath, { locale: key });
+  };
 
   const items: MenuProps['items'] = [
     {
       label: `${translate('layout.greek')}`,
       key: '0',
       icon: <Image preview={false} src="/assets/svgs/greek-flag.svg" alt="Greek flag" />,
-      onClick: () => router.push(`/el${router.pathname}`),
+      onClick: () => changeLanguage('el'),
     },
     {
       label: `${translate('layout.english')}`,
       key: '1',
       icon: <Image preview={false} src="/assets/svgs/greek-flag.svg" alt="Greek flag" />,
-      onClick: () => router.push(`/en${router.pathname}`),
+      onClick: () => changeLanguage('en'),
     },
   ];
 

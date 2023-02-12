@@ -5,7 +5,6 @@ import useNotification from '@hooks/notification/useNotification';
 import StateEnum from '@constants/state.enum';
 import { useTranslation } from 'next-i18next';
 import UiButton from '@components/ui/button/UiButton';
-import Router from 'next/router';
 import styles from './Login.module.less';
 
 const Login: React.FC = () => {

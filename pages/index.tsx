@@ -1,8 +1,8 @@
 import React from 'react';
 import JobsList from '@components/jobs-list/JobsList';
+import { GetServerSideProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import styles from './index.module.less';
-import {GetServerSideProps} from "next";
-import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 const HomePage: React.FC = () => {
   return (
