@@ -18,6 +18,18 @@ Problems that I didn't have time to solve:
 * Some warnings that has the project on build(I believee they have to do with modules version)
 * I didn't have time to do the react-intersection-observer mock in test so the JobsList component has no tests
 
+# Steps to start the project
+```
+ Install node v16.19.0
+ 
+ nvm use 16
+ 
+ yarn install
+ 
+ yarn dev
+```
+* Then you have to go on localhost:3000/login to see the login page of the app
+
 # Action points that I have to mention
 
 PS: For some UI functionalities, I had to make some decisions by myself.
