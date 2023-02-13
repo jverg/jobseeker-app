@@ -30,4 +30,28 @@ describe('Login component', () => {
       }),
     );
   });
+  it('should login of invalid user', async () => {
+    const axiosLoginPost = jest
+      .spyOn(axiosInstance, 'post')
+      .mockImplementation(() => Promise.resolve({ code: 401, message: 'Incorrect email or password' }));
+    render(<Login />);
+    const emailInput: HTMLElement = screen.getByTestId('email-input');
+    fireEvent.change(emailInput, {
+      target: { value: 'email@email.com' },
+    });
+    const passwordInput: HTMLElement = screen.getByTestId('password-input');
+    fireEvent.change(passwordInput, {
+      target: { value: 'test@123!' },
+    });
+    fireEvent.click(screen.getByText('login.login'));
+    await waitFor(() =>
+      expect(axiosLoginPost).toHaveBeenCalledWith('/login', {
+        email: 'email@email.com',
+        password: 'test@123!',
+      }),
+    );
+    await waitFor(() =>
+      expect(screen.queryAllByText('notifications.wrong_credentials_try_again')[0]).toBeInTheDocument(),
+    );
+  });
 });
