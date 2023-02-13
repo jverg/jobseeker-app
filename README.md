@@ -18,6 +18,8 @@ Problems that I didn't have time to solve:
 * Some warnings that has the project on build(I believee they have to do with modules version)
 * I didn't have time to do the react-intersection-observer mock in test so the JobsList component has no tests
 
+# Action points that I have to mention
+
 PS: For some UI functionalities, I had to make some decisions by myself.
 
 PS2: I really enjoyed this whole trip I did, till this project.
