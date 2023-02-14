@@ -28,7 +28,8 @@ Problems that I didn't have time to solve:
  
  yarn dev
 ```
-* Then you have to go on localhost:3000/login to see the login page of the app
+* Copy the **.env.example** file to **.env** file and update the giver variables
+* You have to go on **localhost:3000/login** to see the login page of the app
 
 # Action points that I have to mention
 
