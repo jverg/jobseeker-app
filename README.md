@@ -28,7 +28,10 @@ Problems that I didn't have time to solve:
  
  yarn dev
 ```
-* Copy the **.env.example** file to **.env** file and update the giver variables
+* Copy the **.env.example** file to **.env** file in project's root folder and update the given variables 
+* In our case:
+  1) FRONTEND_URL='http://localhost:3000'
+  2) BACKEND_URL='http://ka-fe-assignment.azurewebsites.net'
 * You have to go on **localhost:3000/login** to see the login page of the app
 
 # Action points that I have to mention
