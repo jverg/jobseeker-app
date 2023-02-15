@@ -1,22 +1,10 @@
 import React from 'react';
-import { useRouter } from 'next/router';
-import TickIcon from '@assets/svgs/tick-icon.svg';
 import { GetServerSideProps } from 'next';
-import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import styles from './index.module.less';
+import ThankYou from '@components/thank-you/ThankYou';
 
 const HomePage: React.FC = () => {
-  const { t: translate } = useTranslation('common');
-  const router = useRouter();
-
-  return (
-    <div className={styles.wrapThankYou}>
-      <TickIcon />
-      <p className="roboto">{translate('thank_you.application_successful')}</p>
-      <p className="roboto-bold">{router.query.title}</p>
-    </div>
-  );
+  return <ThankYou />;
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

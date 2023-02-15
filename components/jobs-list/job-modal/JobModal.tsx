@@ -15,7 +15,7 @@ type JobModalProps = {
 };
 
 const JobModal: React.FC<JobModalProps> = ({ jobId }) => {
-  const { t: translate } = useTranslation('common');
+  const { t: translate, i18n } = useTranslation('common');
   const [form] = Form.useForm();
   const [job, setJob] = useState<JobModel>();
   const [disabled, setDisabled] = useState<boolean>(true);
@@ -44,7 +44,7 @@ const JobModal: React.FC<JobModalProps> = ({ jobId }) => {
     try {
       await postToJob(jobId, form.getFieldValue('yearsOfExperience'));
       setAwaitSuccess(true);
-      window.location.assign(`/thank-you?title=${job?.title}`);
+      window.location.assign(`/${i18n.language}/thank-you?title=${job?.title}`);
     } catch (requestError: any) {
       if (requestError.response.statusText !== 'Unauthorized') generalError();
     }
