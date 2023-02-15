@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const { i18n } = require('./next-i18next.config');
 const withAntdLess = require('next-plugin-antd-less');
-const withPlugins = require('next-compose-plugins');
+const nextComposePlugins = require('next-compose-plugins');
+const { withPlugins } = nextComposePlugins.extend(() => ({}));
 
-const moduleExports = withPlugins(
+module.exports  = withPlugins(
     [
         [
             withAntdLess,
@@ -24,10 +25,5 @@ const moduleExports = withPlugins(
             config.plugins.push(new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en|el/));
             return config;
         },
-        eslint: {
-            ignoreDuringBuilds: true,
-        },
     },
 );
-
-module.exports = moduleExports;
