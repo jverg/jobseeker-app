@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, render, waitFor, screen } from '@testing-library/react';
+import {cleanup, render, waitFor, screen, fireEvent} from '@testing-library/react';
 import jobElem, { jobElemWithFutureDate } from '@mocks/jobs/jobs';
 import axiosInstance from '@utils/http-client';
 import JobModal from './JobModal';
@@ -31,11 +31,31 @@ describe('Job modal component', () => {
     await waitFor(() => expect(screen.getByText('job_modal.not_accept_applications')).toBeInTheDocument());
   });
   it('should render the send application button', async () => {
-    const error = { response: { statusText: 'Not Found' } };
-    jest.spyOn(axiosInstance, 'get').mockImplementation(() => Promise.reject(error));
     jest.spyOn(axiosInstance, 'get').mockImplementation(() => Promise.resolve(jobElemWithFutureDate));
 
-    render(<JobModal jobId={jobElem.id} />);
+    render(<JobModal jobId={jobElemWithFutureDate.id} />);
     await waitFor(() => expect(screen.getByText('job_modal.send_application')).toBeInTheDocument());
+  });
+  it('should send application', async () => {
+    jest.spyOn(axiosInstance, 'get').mockImplementation(() => Promise.resolve(jobElemWithFutureDate));
+    const axiosJobPost = jest.spyOn(axiosInstance, 'post').mockImplementation();
+
+    render(<JobModal jobId={jobElemWithFutureDate.id} />);
+    await waitFor(() => expect(screen.getByText('job_modal.send_application')).toBeInTheDocument());
+    fireEvent.change(screen.getByTestId('years-of-experience-input'), {
+      target: { value: 7 },
+    });
+    fireEvent.click(screen.getByText('job_modal.send_application'));
+    await waitFor(() => expect(axiosJobPost).toHaveBeenCalledWith(`/job-posts/apply`, { id: 1, yearsOfExperience: 7 }));
+  });
+  it('should render the error message if years of experience is empty', async () => {
+    jest.spyOn(axiosInstance, 'get').mockImplementation(() => Promise.resolve(jobElemWithFutureDate));
+    render(<JobModal jobId={jobElemWithFutureDate.id} />);
+    await waitFor(() => expect(screen.getByText('job_modal.give_your_experience')).toBeInTheDocument());
+    fireEvent.change(screen.getByTestId('years-of-experience-input'), {
+      target: { value: 7 },
+    });
+    await waitFor(() => expect(screen.getByText('job_modal.send_application')).toBeEnabled());
+    await waitFor(() => expect(screen.queryByText('job_modal.give_your_experience')).not.toBeInTheDocument());
   });
 });

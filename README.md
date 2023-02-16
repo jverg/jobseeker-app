@@ -10,13 +10,9 @@ This project is for testing purposes in Kariera.gr company.
 * One API project with all endpoints that can be found [here](https://ka-fe-assignment.azurewebsites.net/api/docs/)
 
 The decisions I made deserve to be noted:
-* I copied funcionality from project that I have worked in the past (This may be my fault)
-* I used nextjs: 12v because I have not seen nextjs: 13v and I. do not believe I have the time to go with nextjs: 13v. I also bbelieve that Nextjs 13 isn't stable for production yet, it has parts that the community believes it also.
+* I copied funcionality from project that I have worked in the past
+* I used nextjs: 12v because I have not seen nextjs: 13v and I do not believe I have the time to go with nextjs: 13v. I also believe that Nextjs 13 isn't stable for production yet, it has parts that the community believes it also.
 * I used nvm(Node Version Manager) with node 16
-
-Problems that I didn't have time to solve:
-* Some warnings that has the project on build(I believee they have to do with modules version)
-* I didn't have time to do the react-intersection-observer mock in test so the JobsList component has no tests
 
 # Steps to start the project
 ```
