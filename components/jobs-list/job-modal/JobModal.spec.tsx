@@ -1,5 +1,5 @@
 import React from 'react';
-import {cleanup, render, waitFor, screen, fireEvent} from '@testing-library/react';
+import { cleanup, render, waitFor, screen, fireEvent } from '@testing-library/react';
 import jobElem, { jobElemWithFutureDate } from '@mocks/jobs/jobs';
 import axiosInstance from '@utils/http-client';
 import JobModal from './JobModal';

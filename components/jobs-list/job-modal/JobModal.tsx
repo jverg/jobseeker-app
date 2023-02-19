@@ -50,17 +50,6 @@ const JobModal: React.FC<JobModalProps> = ({ jobId }) => {
     }
   };
 
-  const ApplyToJobForm = () => {
-    return (
-      <Form name="jobApply" layout="vertical" autoComplete="off" form={form}>
-        <Form.Item label={translate('job_modal.years_of_experience')} name="yearsOfExperience">
-          <InputNumber onChange={(value) => setDisabled(!value)} data-testid="years-of-experience-input" />
-        </Form.Item>
-        {disabled && <p className={`h6 ${styles.disabledMessage}`}>{translate('job_modal.give_your_experience')}</p>}
-      </Form>
-    );
-  };
-
   return (
     <>
       {job ? (
@@ -70,7 +59,20 @@ const JobModal: React.FC<JobModalProps> = ({ jobId }) => {
           </div>
           <div className={styles.wrapJobDescription}>
             <HtmlRenderer html={job.description} className={styles.jobDescription} />
-            {job.validUntil > Date.now() && <ApplyToJobForm />}
+            {job.validUntil > Date.now() && (
+              <Form name="jobApply" layout="vertical" autoComplete="off" form={form}>
+                <Form.Item label={translate('job_modal.years_of_experience')} name="yearsOfExperience">
+                  <InputNumber
+                    min={0}
+                    onChange={(value) => setDisabled(!value)}
+                    data-testid="years-of-experience-input"
+                  />
+                </Form.Item>
+                {disabled && (
+                  <p className={`h6 ${styles.disabledMessage}`}>{translate('job_modal.give_your_experience')}</p>
+                )}
+              </Form>
+            )}
           </div>
           <div className={styles.wrapSendApplicationButton}>
             {job.validUntil >= Date.now() ? (

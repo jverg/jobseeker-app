@@ -26,7 +26,8 @@
     "apply_for_job": "Αίτηση για εργασία"
   },
   "thank_you": {
-    "application_successful": "Η αιτησή σου στάλθηκε με επιτυχία"
+    "application_successful": "Η αιτησή σου στάλθηκε με επιτυχία",
+    "back_to_positions": "Επιστροφή στις θέσεις"
   },
   "job_modal": {
     "send_application": "Αποστολή αίτησης",

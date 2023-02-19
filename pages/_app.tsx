@@ -5,7 +5,7 @@ import { appWithTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import getConfig from 'next/config';
 import AppLayout from '@components/app-layout/AppLayout';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import '../styles/global.css';
 
 require('../styles/index.less');
@@ -15,10 +15,12 @@ const {
 } = getConfig();
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (window.location.pathname !== '/login' && !storedUser) {
-      Router.push('/login');
+      router.push('/login');
     }
   }, []);
 

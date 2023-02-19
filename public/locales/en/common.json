@@ -26,7 +26,8 @@
     "apply_for_job": "Apply for the Job"
   },
   "thank_you": {
-    "application_successful": "Application successful"
+    "application_successful": "Application successful",
+    "back_to_positions": "Back to positions"
   },
   "job_modal": {
     "send_application": "Send application",
